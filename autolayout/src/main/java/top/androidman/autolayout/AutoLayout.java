@@ -1,4 +1,4 @@
-package top.androidman.smartlayout;
+package top.androidman.autolayout;
 
 import android.support.annotation.NonNull;
 
@@ -6,43 +6,43 @@ import android.support.annotation.NonNull;
  * Created by yanjie on 2018-07-03.
  * Describe:
  */
-class SmartLayout {
-    private static final SmartLayout ourInstance = new SmartLayout();
-    private final SmartData smartData = new SmartData();
+public class AutoLayout {
+    private static final AutoLayout ourInstance = new AutoLayout();
+    private final AutoData smartData = new AutoData();
 
-    static SmartLayout init() {
+    public static AutoLayout init() {
         return ourInstance;
     }
 
-    private SmartLayout() {
+    private AutoLayout() {
     }
 
-    public SmartLayout design(@NonNull int dp){
+    public AutoLayout design(@NonNull int dp){
         smartData.setDesign(dp);
         return this;
     }
 
-    public SmartLayout width(){
+    public AutoLayout width(){
         smartData.setWidth(true);
         return this;
     }
 
-    public SmartLayout height(){
+    public AutoLayout height(){
         smartData.setHeight(true);
         return this;
     }
 
-    public SmartLayout ignore(){
+    public AutoLayout ignore(){
         smartData.setIgnore(true);
         return this;
     }
 
-    public SmartLayout multiple(int multiple){
+    public AutoLayout multiple(int multiple){
         smartData.setMultiple(multiple);
         return this;
     }
 
-    public SmartData getSmartData(){
+    public AutoData getSmartData(){
         return smartData;
     }
 

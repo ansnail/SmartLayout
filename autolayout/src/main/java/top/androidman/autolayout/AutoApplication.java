@@ -1,10 +1,9 @@
-package top.androidman.smartlayout;
+package top.androidman.autolayout;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.content.res.Configuration;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
@@ -13,7 +12,7 @@ import android.util.DisplayMetrics;
  * Created by yanjie on 2018-07-03.
  * Describe:
  */
-public abstract class SmartApplication extends Application implements Application.ActivityLifecycleCallbacks{
+public abstract class AutoApplication extends Application implements Application.ActivityLifecycleCallbacks{
 
     private float sNoncompatDensity;
     private float sNoncompatScaledDensity;
@@ -27,9 +26,9 @@ public abstract class SmartApplication extends Application implements Applicatio
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        SmartData smartData = getSmartData(activity);
+        AutoData smartData = getSmartData(activity);
         if (smartData.getDesign() == 0){
-            throw new SmartException("Please set design width");
+            throw new AutoException("Please set design width");
         }
 
         final DisplayMetrics appDisplayMetrics = getResources().getDisplayMetrics();
@@ -72,11 +71,11 @@ public abstract class SmartApplication extends Application implements Applicatio
      * @return SmartData
      */
     @NonNull
-    private SmartData getSmartData(Activity activity) {
-        SmartData smartData = SmartLayout.init().getSmartData();;
-        if (activity instanceof ISmartLayout){
-            ISmartLayout iSmartLayout = (ISmartLayout) activity;
-            smartData = iSmartLayout.custom();
+    private AutoData getSmartData(Activity activity) {
+        AutoData smartData = AutoLayout.init().getSmartData();;
+        if (activity instanceof IAutoLayout){
+            IAutoLayout iAutoLayout = (IAutoLayout) activity;
+            smartData = iAutoLayout.custom();
         }
         return smartData;
     }
@@ -88,13 +87,13 @@ public abstract class SmartApplication extends Application implements Applicatio
      * @param smartData
      * @return
      */
-    private float getTargetDensity(DisplayMetrics displayMetrics, SmartData smartData){
+    private float getTargetDensity(DisplayMetrics displayMetrics, AutoData smartData){
         float targetDensity = 0;
         if (smartData.isWidth()){
             targetDensity = ((float) displayMetrics.widthPixels) / smartData.getDesign();
         }else if (smartData.isHeight()){
             if (smartData.getDesign() == 0 || smartData.getMultiple() == 0){
-                throw new SmartException("when layout height, must set design and multiple");
+                throw new AutoException("when layout height, must set design and multiple");
             }
             if (smartData.isIgnore()){
                 targetDensity = ((float) displayMetrics.heightPixels) / smartData.getDesign();

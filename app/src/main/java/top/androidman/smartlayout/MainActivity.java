@@ -9,7 +9,10 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements ISmartLayout{
+import top.androidman.autolayout.AutoData;
+import top.androidman.autolayout.IAutoLayout;
+
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +28,9 @@ public class MainActivity extends AppCompatActivity implements ISmartLayout{
                 getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
                 int statusBarHeight = frame.top;
                 Toast.makeText(MainActivity.this, "statusBarHeight = " + statusBarHeight, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "displayMetrics = " + displayMetrics.heightPixels, Toast.LENGTH_SHORT).show();
             }
         });
 
-    }
-    @Override
-    public SmartData custom() {
-        SmartData smartData = new SmartData();
-        smartData.setHeight(true);
-        smartData.setDesign(640);
-        smartData.setIgnore(false);
-        smartData.setMultiple(3);
-        return smartData;
     }
 }

@@ -1,10 +1,10 @@
-package top.androidman.smartlayout;
+package top.androidman.autolayout;
 
 /**
  * Created by yanjie on 2018-07-03.
  * Describe:
  */
-public class SmartData {
+public class AutoData {
     private int design;     //设计图的设计尺寸
     private boolean width;  //以宽为基准进行缩放
     private boolean height; //以高为基准进行缩放，如果同时设置或同时未设置的时候以宽为准

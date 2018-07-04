@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:layout_centerVertical="true"
         android:id="@+id/left"
@@ -28,4 +27,30 @@
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:background="#77000000" />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/top"
+        android:text="我是上边"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:layout_width="50dp"
+        android:layout_height="311dp"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/bottom"
+        android:text="我是下边"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:layout_width="50dp"
+        android:layout_height="310dp"
+        android:layout_below="@id/top"
+        android:background="#77ff" />
+
+
+
 </RelativeLayout>
