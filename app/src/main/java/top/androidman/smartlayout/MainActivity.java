@@ -1,13 +1,15 @@
 package top.androidman.smartlayout;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ISmartLayout{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,17 +20,22 @@ public class MainActivity extends AppCompatActivity {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "11111", Toast.LENGTH_SHORT).show();
+                DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+                Rect frame = new Rect();
+                getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+                int statusBarHeight = frame.top;
+                Toast.makeText(MainActivity.this, "statusBarHeight = " + statusBarHeight, Toast.LENGTH_SHORT).show();
             }
         });
 
-        left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "22222", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
-
-
+    @Override
+    public SmartData custom() {
+        SmartData smartData = new SmartData();
+        smartData.setHeight(true);
+        smartData.setDesign(640);
+        smartData.setIgnore(false);
+        smartData.setMultiple(3);
+        return smartData;
+    }
 }

@@ -32,6 +32,16 @@ class SmartLayout {
         return this;
     }
 
+    public SmartLayout ignore(){
+        smartData.setIgnore(true);
+        return this;
+    }
+
+    public SmartLayout multiple(int multiple){
+        smartData.setMultiple(multiple);
+        return this;
+    }
+
     public SmartData getSmartData(){
         return smartData;
     }

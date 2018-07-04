@@ -5,5 +5,5 @@ package top.androidman.smartlayout;
  * Describe:
  */
 public interface ISmartLayout {
-    SmartData custome();
+    SmartData custom();
 }
