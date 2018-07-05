@@ -9,9 +9,6 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import top.androidman.autolayout.AutoData;
-import top.androidman.autolayout.IAutoLayout;
-
 public class MainActivity extends AppCompatActivity{
 
     @Override

@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 
 /**
@@ -26,9 +25,12 @@ public abstract class AutoApplication extends Application implements Application
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        AutoData smartData = getSmartData(activity);
-        if (smartData.getDesign() == 0){
-            throw new AutoException("Please set design width");
+        AutoData autoData = getAutoData(activity);
+        if (autoData.getWidthNum() == 0 && autoData.getHeightNum() == 0){
+            throw new AutoException("Please set design width or height");
+        }
+        if (autoData.getMultiple() == 0){
+            throw new AutoException("Please set multiple , it is very important");
         }
 
         final DisplayMetrics appDisplayMetrics = getResources().getDisplayMetrics();
@@ -50,7 +52,7 @@ public abstract class AutoApplication extends Application implements Application
             });
         }
 
-        float targetDensity = getTargetDensity(appDisplayMetrics, smartData);
+        float targetDensity = getTargetDensity(appDisplayMetrics, autoData);
         float targetScaledDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);
         int targetDensityDpi = (int) (160 * targetDensity);
 
@@ -67,36 +69,35 @@ public abstract class AutoApplication extends Application implements Application
 
     /**
      * 获取用户的设置数据
-     * @param activity 用户自定义的
-     * @return SmartData
+     * @param activity 用户自定义的数据会覆盖全局数据
+     * @return autoData
      */
-    @NonNull
-    private AutoData getSmartData(Activity activity) {
-        AutoData smartData = AutoLayout.init().getSmartData();;
+    private AutoData getAutoData(Activity activity) {
+        AutoData autoData = AutoLayout.init().getAutoData();
         if (activity instanceof IAutoLayout){
             IAutoLayout iAutoLayout = (IAutoLayout) activity;
-            smartData = iAutoLayout.custom();
+            autoData = iAutoLayout.custom();
         }
-        return smartData;
+        return autoData;
     }
 
 
     /**
      * 获取缩放后的Density
      * @param displayMetrics
-     * @param smartData
+     * @param autoData
      * @return
      */
-    private float getTargetDensity(DisplayMetrics displayMetrics, AutoData smartData){
+    private float getTargetDensity(DisplayMetrics displayMetrics, AutoData autoData){
         float targetDensity = 0;
-        if (smartData.isWidth()){
-            targetDensity = ((float) displayMetrics.widthPixels) / smartData.getDesign();
-        }else if (smartData.isHeight()){
-            if (smartData.getDesign() == 0 || smartData.getMultiple() == 0){
-                throw new AutoException("when layout height, must set design and multiple");
-            }
-            if (smartData.isIgnore()){
-                targetDensity = ((float) displayMetrics.heightPixels) / smartData.getDesign();
+        float standardDp;
+        if (autoData.isWidth()){
+            standardDp = autoData.getWidthNum() / autoData.getMultiple();
+            targetDensity = displayMetrics.widthPixels / standardDp;
+        }else if (autoData.isHeight()){
+            standardDp = autoData.getHeightNum() / autoData.getMultiple();
+            if (autoData.isIgnore()){
+                targetDensity = displayMetrics.heightPixels / standardDp;
                 android.util.Log.e("SmartLayout","targetDensity_yes = " + targetDensity);
             }else {
                 int statusBarHeight = -1;
@@ -107,7 +108,7 @@ public abstract class AutoApplication extends Application implements Application
                     statusBarHeight = getResources().getDimensionPixelSize(resourceId);
                 }
                 android.util.Log.e("SmartLayout","statusBarHeight = " + statusBarHeight);
-                targetDensity = ((float)(displayMetrics.heightPixels - statusBarHeight)) / (smartData.getDesign() - statusBarHeight / smartData.getMultiple());
+                targetDensity = ((float)(displayMetrics.heightPixels - statusBarHeight)) / (standardDp - statusBarHeight / autoData.getMultiple());
                 android.util.Log.e("SmartLayout","targetDensity_no = " + targetDensity);
             }
         }
