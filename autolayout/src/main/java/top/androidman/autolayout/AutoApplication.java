@@ -26,6 +26,9 @@ public abstract class AutoApplication extends Application implements Application
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
         AutoData autoData = getAutoData(activity);
+        if (autoData == null){
+            return;
+        }
         if (autoData.getWidthNum() == 0 && autoData.getHeightNum() == 0){
             throw new AutoException("Please set design width or height");
         }

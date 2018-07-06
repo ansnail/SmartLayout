@@ -51,6 +51,4 @@
         android:layout_below="@id/top"
         android:background="#77ff" />
 
-
-
 </RelativeLayout>

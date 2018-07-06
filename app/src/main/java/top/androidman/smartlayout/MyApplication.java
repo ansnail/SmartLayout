@@ -12,7 +12,7 @@ public class MyApplication extends AutoApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        AutoLayout.init().height().design(640).multiple(3);
+        AutoLayout.init().width(1080).multiple(3);
     }
 
 }
