@@ -20,7 +20,7 @@ public class MyApplication extends AutoApplication {
 }
 
 ```
-然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
+然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
 
 ![haha](./i_am_so_diao.webp)
 
