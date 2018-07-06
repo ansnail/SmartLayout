@@ -1,10 +1,14 @@
 快速开始：
-#### 3.1 添加依赖
 
-> compile 'top.androidman.autolayout:autolayout:1.0.0'
+### 3.1 添加依赖
 
-#### 3.2 初始化并开始使用
+``` java
+compile 'top.androidman.autolayout:autolayout:1.0.0'
+```
+
+### 3.2 初始化并开始使用
 继承AutoApplication，然后在Application的方法里面根据自己的设计图设置相应的值即可
+
 ``` java
 public class MyApplication extends AutoApplication {
 
@@ -13,15 +17,14 @@ public class MyApplication extends AutoApplication {
         super.onCreate();
         AutoLayout.init().width(1080).multiple(3);
     }
-
 }
 
 ```
 然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
 
-![haha](/img/post/2018-07-04-android-autolayout/i_am_so_diao.webp)
+![haha](./i_am_so_diao.webp)
 
-#### 3.3 高级应用
+### 3.3 高级应用
 (1)以高度为标准进行适配
 
 ``` java
@@ -35,7 +38,7 @@ public class MyApplication extends AutoApplication {
 
 }
 ```
-(2)在某个activity中想改变全局的适配标准，比如全局是以宽为维度进行适配，在某个activity想改为以高为维度，只需要这个activity实现IAutoLayout接口即可，例如
+(2)在某个activity中想改变全局的适配标准，比如全局是以宽为维度进行适配，在某个activity想改为以高为维度，只需要这个activity实现IAutoLayout接口即可，例如
 
 ``` java
 public class MainActivity extends AppCompatActivity implements IAutoLayout{
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IAutoLayout{
 }
 ```
 
-完全不影响现有的逻辑
+完全不影响现有的逻辑
 
 (2)如果既不想以高为维度也不想以宽为维度进行适配，即这个页面不想自动进行适配的话，只需要把custom方法的返回值设置为null即可，例如：
 
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements IAutoLayout{
     }
 }
 ```
-(3)当以高为维度进行适配的时候，状态栏的高度将影响适配结果，所以会自动获取状态栏的高度，并将状态栏的高度减去，从而达到更好的适配结果。不过假如某些页面是全屏，即需要忽略状态栏。那么只需要多设置一个ignore方法即可，例如：
+(3)当以高为维度进行适配的时候，状态栏的高度将影响适配结果，所以会自动获取状态栏的高度，并将状态栏的高度减去，从而达到更好的适配结果。不过假如某些页面是全屏，即需要忽略状态栏。那么只需要多设置一个ignore方法即可，例如：
 
 ``` java
 public class MyApplication extends AutoApplication {
@@ -103,9 +106,10 @@ public class MainActivity extends AppCompatActivity implements IAutoLayout{
 
 适配前：&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;适配后：
 
-![适配前](/img/post/2018-07-04-android-autolayout/auto_layout_1.webp)![适配前](/img/post/2018-07-04-android-autolayout/auto_layout_2.webp)
+![适配前](./auto_layout_1.webp)![适配前](./auto_layout_2.webp)
 
 布局文件如下：
+
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
