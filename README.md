@@ -1,12 +1,16 @@
+### 具体的原理请看这里
+
+[点我，点我](http://androidman.top/2018/07/04/android-autolayout/)
+
 快速开始：
 
-### 3.1 添加依赖
+### 1 添加依赖
 
 ``` java
 compile 'top.androidman.autolayout:autolayout:1.0.0'
 ```
 
-### 3.2 初始化并开始使用
+### 2 初始化并开始使用
 继承AutoApplication，然后在Application的方法里面根据自己的设计图设置相应的值即可
 
 ``` java
@@ -22,9 +26,9 @@ public class MyApplication extends AutoApplication {
 ```
 然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
 
-![haha](./i_am_so_diao.webp)
+![haha](./i_am_so_diao.jpg)
 
-### 3.3 高级应用
+### 3 高级应用
 (1)以高度为标准进行适配
 
 ``` java
