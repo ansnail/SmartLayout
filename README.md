@@ -26,7 +26,7 @@ public class MyApplication extends AutoApplication {
 ```
 然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
 
-![haha](./i_am_so_diao.jpg)
+![haha](http://androidman.top/img/post/2018-07-04-android-autolayout/i_am_so_diao.webp)
 
 ### 3 高级应用
 (1)以高度为标准进行适配
@@ -108,9 +108,13 @@ public class MainActivity extends AppCompatActivity implements IAutoLayout{
 
 最后放两张适配的效果图(设计稿宽度1080，高度1920，安装到小米Max手机):
 
-适配前：&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;适配后：
+适配前：&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-![适配前](./auto_layout_1.webp)![适配前](./auto_layout_2.webp)
+![适配前](http://androidman.top/img/post/2018-07-04-android-autolayout/auto_layout_1.webp)
+
+适配后：
+
+![适配后](http://androidman.top/img/post/2018-07-04-android-autolayout/auto_layout_2.webp)
 
 布局文件如下：
 
