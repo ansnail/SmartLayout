@@ -1,3 +1,5 @@
+根据今日头条原理进行的方案选择，极简
+
 ### 具体的原理请看这里
 
 [点我，点我](http://androidman.top/2018/07/04/android-autolayout/)
