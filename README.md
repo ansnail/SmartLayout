@@ -1,4 +1,4 @@
-根据今日头条原理进行的方案选择，极简
+A low-cost Android screen adaptation solution (今日头条屏幕适配方案终极版，一个极低成本的 Android 屏幕适配方案).
 
 ### 具体的原理请看这里
 
@@ -28,7 +28,7 @@ public class MyApplication extends AutoApplication {
 ```
 然后你的应用就可以自动适配了,是不是使用方法简单的令人发指。
 
-![haha](http://androidman.top/img/post/2018-07-04-android-autolayout/i_am_so_diao.webp)
+![haha](http://androidman.top/img/post/2018-05-14-android-autolayout/i_am_so_diao.webp)
 
 ### 3 高级应用
 (1)以高度为标准进行适配
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity implements IAutoLayout{
 
 适配前：&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-![适配前](http://androidman.top/img/post/2018-07-04-android-autolayout/auto_layout_1.webp)
+![适配前](http://androidman.top/img/post/2018-05-14-android-autolayout/auto_layout_1.webp)
 
 适配后：
 
-![适配后](http://androidman.top/img/post/2018-07-04-android-autolayout/auto_layout_2.webp)
+![适配后](http://androidman.top/img/post/2018-05-14-android-autolayout/auto_layout_2.webp)
 
 布局文件如下：
 
